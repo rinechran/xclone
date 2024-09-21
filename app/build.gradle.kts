@@ -3,6 +3,9 @@ import org.codehaus.groovy.transform.trait.Traits.Implemented
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    id("kotlin-android")
+    id("kotlin-kapt")
+    id("io.objectbox")
 }
 
 android {
@@ -52,8 +55,9 @@ android {
 }
 
 dependencies {
+    implementation(libs.objectbox.kotlin)
     implementation("io.coil-kt:coil-compose:2.1.0")
-    implementation("androidx.compose.material3:material3")
+    implementation(libs.material3)
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.6.2")
     implementation(libs.bundles.retrofit)
     implementation(libs.androidx.core.ktx)
