@@ -11,27 +11,18 @@ object ObjectBox {
     lateinit var store: BoxStore
         private set
 
-
     fun init(context: Context) {
         store = MyObjectBox
             .builder()
             .androidContext(context)
             .build()
-
-        val user = AccountEntity(email = "aa", password = "asdas");
-
-        store.boxFor(AccountEntity::class.java)
-            .put(user);
-
+    }
+    fun getCurrentAccount(): MutableList<AccountEntity> {
         val results = store.boxFor(AccountEntity::class.java)
-            .query(AccountEntity_.email.equal("aa"))
+            .query()
             .build()
             .find()
-
-        Log.d("TAG","ASD");
-
-
-
+        return results;
     }
 
 

@@ -1,4 +1,4 @@
-package com.example.x_clone.repository
+package com.example.x_clone.network
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

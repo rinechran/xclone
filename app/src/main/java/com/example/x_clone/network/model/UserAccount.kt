@@ -1,4 +1,4 @@
-package com.example.x_clone.model
+package com.example.x_clone.network.model
 
 data class UserAccount(
     val email : String,
