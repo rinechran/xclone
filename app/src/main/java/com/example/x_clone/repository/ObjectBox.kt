@@ -17,12 +17,21 @@ object ObjectBox {
             .androidContext(context)
             .build()
     }
-    fun getCurrentAccount(): MutableList<AccountEntity> {
+    fun getCurrentAccount(): AccountEntity? {
         val results = store.boxFor(AccountEntity::class.java)
             .query()
             .build()
             .find()
-        return results;
+        return if (results.isNotEmpty()) results[0] else null
+    }
+    fun saveAccountOverride(email : String , password : String){
+        val accountBox = store.boxFor(AccountEntity::class.java)
+        accountBox.removeAll();
+        val newAccount = AccountEntity(
+            email = email,
+            password = password
+        )
+        accountBox.put(newAccount)
     }
 
 
